@@ -1,9 +1,5 @@
-# Ignore everything in home directory
-*
-
-# Excluding this gitignore file
+/*
 !.gitignore
-
-# And Excluding Vim files
 !.vimrc
-!.vim/*
+
+!.vim/
