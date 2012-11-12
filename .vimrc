@@ -6,7 +6,7 @@ set t_Co=256
 filetype off
 filetype plugin indent on
 syntax on
-colorscheme zenburn
+
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
