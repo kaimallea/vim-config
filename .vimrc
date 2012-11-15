@@ -3,6 +3,9 @@ set laststatus=2
 set encoding=utf-8
 set t_Co=256
 set number
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 filetype off
 filetype plugin indent on
