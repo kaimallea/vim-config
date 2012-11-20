@@ -6,6 +6,9 @@ set number
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set smarttab
+set mouse=a
+set list listchars=tab:→\ ,trail:·
 
 filetype off
 filetype plugin indent on
