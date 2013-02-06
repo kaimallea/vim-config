@@ -18,7 +18,7 @@ all:
 
 	# Configure Solarized theme
 	echo '' >> ~/.vimrc
-	echo 'set background=light' >> ~/.vimrc
+	echo 'set background=dark' >> ~/.vimrc
 	echo 'colorscheme solarized' >> ~/.vimrc
 
 clean:
