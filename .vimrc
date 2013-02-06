@@ -27,4 +27,6 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'Shougo/neocomplcache'
+
+let g:neocomplcache_enable_at_startup = 1
