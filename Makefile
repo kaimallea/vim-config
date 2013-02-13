@@ -16,11 +16,6 @@ all:
 	# Update Bundles
 	env GIT_SSL_NO_VERIFY=true vim +BundleInstall +qall
 
-	# Configure Solarized theme
-	echo '' >> ~/.vimrc
-	echo 'set background=dark' >> ~/.vimrc
-	echo 'colorscheme solarized' >> ~/.vimrc
-
 clean:
 	# Cleanup what was created
 	rm -rf ~/.vim/bundle/vundle

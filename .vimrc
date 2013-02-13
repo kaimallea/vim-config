@@ -28,5 +28,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'Shougo/neocomplcache'
+Bundle 'chriskempson/vim-tomorrow-theme'
 
 let g:neocomplcache_enable_at_startup = 1
+
+set background=dark
+colorscheme Tomorrow-Night
