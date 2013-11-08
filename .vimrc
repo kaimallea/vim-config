@@ -5,15 +5,22 @@ set t_Co=256
 set number
 set tabstop=4
 set shiftwidth=4
+set bs=2
+set smartindent
 set expandtab
 set smarttab
 set mouse=a
-set list listchars=tab:→\ ,trail:·
+set list listchars=tab:▸\ ,trail:·
+
+set incsearch
+set hlsearch
+
+set cursorline
 
 filetype off
 filetype plugin indent on
-syntax on
 
+syntax on
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -23,7 +30,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
