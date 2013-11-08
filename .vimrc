@@ -17,6 +17,8 @@ set hlsearch
 
 set cursorline
 
+execute pathogen#infect()
+
 filetype off
 filetype plugin indent on
 
@@ -40,3 +42,12 @@ let g:neocomplcache_enable_at_startup = 1
 
 set background=dark
 colorscheme Tomorrow-Night
+
+" Ctrl+N toggles NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Close vim if NERDTree is the last window open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Open NERDTree automatically if no filename specified
+autocmd vimenter * if !argc() | NERDTree | endif

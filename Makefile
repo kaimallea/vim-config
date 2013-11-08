@@ -11,6 +11,7 @@ all:
 
 	# Copy vundle and and .vimrc
 	rsync -a --exclude .git/ .vim/bundle/vundle ~/.vim/bundle/
+	rsync -a .vim/autoload/ ~/.vim/autoload/
 	cp .vimrc ~/.vimrc
 
 	# Update Bundles
