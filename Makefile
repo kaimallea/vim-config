@@ -10,8 +10,7 @@ all:
 	[ ! -f ~/.vimrc ] || cp ~/.vimrc .vimrc.bak
 
 	# Copy vundle and and .vimrc
-	rsync -a --exclude .git/ .vim/bundle/vundle ~/.vim/bundle/
-	rsync -a .vim/autoload/ ~/.vim/autoload/
+	rsync -a --exclude .git/ .vim/ ~/.vim/
 	cp .vimrc ~/.vimrc
 
 	# Update Bundles
