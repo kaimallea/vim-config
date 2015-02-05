@@ -1,4 +1,7 @@
 set nocompatible
+filetype off
+set shell=/bin/bash
+
 set laststatus=2
 set encoding=utf-8
 set t_Co=256
@@ -17,29 +20,22 @@ set hlsearch
 
 set cursorline
 
-execute pathogen#infect()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-filetype off
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'flazz/vim-colorschemes'
+
+call vundle#end()
 filetype plugin indent on
 
-syntax on
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'chriskempson/vim-tomorrow-theme'
-
-let g:neocomplcache_enable_at_startup = 1
-
+syntax enable
 set background=dark
 colorscheme Tomorrow-Night
 
