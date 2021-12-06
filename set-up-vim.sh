@@ -50,7 +50,11 @@ install_nvim_config()
   mv init.vim "$VIM_CONFIG_DIR/init.vim"
 }
 
+install_plugins()
+{
+  "$HOME"/bin/nvim --headless +PlugInstall +qall
+}
+
 install_nvim
 install_nvim_config
-
-"$HOME"/bin/nvim --headless +PlugInstall +qall
+install_plugins
