@@ -52,3 +52,5 @@ install_nvim_config()
 
 install_nvim
 install_nvim_config
+
+"$HOME"/bin/nvim --headless +PlugInstall +qall
