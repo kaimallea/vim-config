@@ -47,7 +47,7 @@ install_nvim_config()
   fi
 
   curl -L -O $VIM_CONFIG
-  mv init.vim "$VIM_CONFIG_DIR/init.vim"
+  cp init.vim "$VIM_CONFIG_DIR/init.vim"
 }
 
 install_plugins()
