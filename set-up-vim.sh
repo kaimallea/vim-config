@@ -16,19 +16,24 @@ install_nvim()
 
   # shellcheck disable=SC2164
   cd "$HOME"
+
   mkdir -p "$HOME/bin"
 
+  echo "installing nvim..."
+
   if [ "$(uname)" = "Darwin" ]; then
-    curl -L -O $DARWIN_PACKAGE
-    tar xzvf nvim-macos.tar.gz
+    curl -sSL -O $DARWIN_PACKAGE
+    tar xzf nvim-macos.tar.gz
     ln -s "$HOME/nvim-osx64/bin/nvim" "$HOME/bin/nvim"
   fi
 
   if [ "$(uname)" = "Linux" ]; then
-    curl -L -O $LINUX_PACKAGE
+    curl -sSL -O $LINUX_PACKAGE
     chmod u+x nvim.appimage
     ln -s "$HOME/nvim.appimage" "$HOME/bin/nvim"
   fi
+
+  echo "adding $HOME/bin to PATH..."
 
   # shellcheck disable=SC2016
   echo 'export PATH="$HOME/bin:$PATH"' >> "$HOME/.bashrc"
