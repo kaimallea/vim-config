@@ -1,10 +1,11 @@
 #!/bin/sh
 
-NVIM_VERSION="0.6.0"
+NVIM_VERSION="0.6.1"
 DARWIN_PACKAGE="https://github.com/neovim/neovim/releases/download/v$NVIM_VERSION/nvim-macos.tar.gz"
 LINUX_PACKAGE="https://github.com/neovim/neovim/releases/download/v$NVIM_VERSION/nvim.appimage"
 VIM_CONFIG="https://raw.githubusercontent.com/kaimallea/vim-config/master/init.vim"
-VIM_CONFIG_DIR="$HOME/.config/nvim"
+VIM_CONFIG_DIR="${XDG_DATA_HOME:-$HOME/.config/nvim}"
+VIM_INSTALL_DIR="${XDG_DATA_HOME:-$HOME/bin}"
 
 install_nvim()
 {
@@ -15,9 +16,9 @@ install_nvim()
   fi
 
   # shellcheck disable=SC2164
-  cd "$HOME"
+  pushd "$HOME"
 
-  mkdir -p "$HOME/bin"
+  mkdir -p "$VIM_INSTALL_DIR"
 
   echo "installing nvim..."
 
@@ -25,6 +26,7 @@ install_nvim()
     curl -sSL -O $DARWIN_PACKAGE
     tar xzf nvim-macos.tar.gz
     ln -s "$HOME/nvim-osx64/bin/nvim" "$HOME/bin/nvim"
+    rm nvim-macos.tar.gz
   fi
 
   if [ "$(uname)" = "Linux" ]; then
@@ -33,12 +35,14 @@ install_nvim()
     ln -s "$HOME/nvim.appimage" "$HOME/bin/nvim"
   fi
 
-  echo "adding $HOME/bin to PATH..."
+  popd
+
+  echo "adding $VIM_INSTALL_DIR to PATH..."
 
   # shellcheck disable=SC2016
-  echo 'export PATH="$HOME/bin:$PATH"' >> "$HOME/.bashrc"
+  test -f "$HOME/.bashrc" && echo 'export PATH="$HOME/bin:$PATH"' >> "$HOME/.bashrc"
   # shellcheck disable=SC2016
-  echo 'export PATH="$HOME/bin:$PATH"' >> "$HOME/.zshrc"
+  test -f "$HOME/.zshrc" && echo 'export PATH="$HOME/bin:$PATH"' >> "$HOME/.zshrc"
 }
 
 install_nvim_config()
@@ -47,19 +51,16 @@ install_nvim_config()
   if [ -f "$VIM_CONFIG_DIR/init.vim" ]; then
     echo "init.vim already exists, renaming it to init.vim.old..."
     mv "$VIM_CONFIG_DIR/init.vim" "$VIM_CONFIG_DIR/init.vim.old"
-  else
-    echo "init.vim does not exist, downloading..."
   fi
 
-  curl -L -O $VIM_CONFIG
-  cp init.vim "$VIM_CONFIG_DIR/init.vim"
-}
-
-install_plugins()
-{
-  "$HOME"/bin/nvim --headless +PlugInstall +qall
+  if test -f init.vim; then
+    echo "copying $PWD/init.vim into $VIM_CONFIG_DIR..."
+    cp init.vim "$VIM_CONFIG_DIR/init.vim"
+  else
+    echo "downloading init.vim into $VIM_CONFIG_DIR..."
+    curl -L "$VIM_CONFIG" --output "$VIM_CONFIG_DIR/init.vim"
+  fi
 }
 
 install_nvim
 install_nvim_config
-install_plugins
