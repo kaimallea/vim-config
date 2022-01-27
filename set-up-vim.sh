@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 NVIM_VERSION="0.6.1"
 DARWIN_PACKAGE="https://github.com/neovim/neovim/releases/download/v$NVIM_VERSION/nvim-macos.tar.gz"
